@@ -1,0 +1,55 @@
+{% extends "template_use.html" %}
+{% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="
+        background-image: url('https://www.animatedtimes.com/wp-content/uploads/2018/07/joker-dark-knight-makes-no-sense-AT.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>Blogs On Reality of World</h1>
+                            <span class="subheading">Do it for people who said you can't do it</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <!-- using for loop(jinja) to take post -->
+                    {% for post in posts %}
+                    <a herf="/post/{{post.slug}}">
+                    <div class="post-preview">
+                        <a href="/post/{{post.slug}}">
+                            <h2 class="post-title">{{post.title}}</h2>
+                            <h3 class="post-subtitle">{{post.subtitle}}</h3>
+
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="/">Admin</a>
+                            on {{post.date}}
+                        </p>
+                        <p  class="post-content">{{post.content[0:125]}}...</p>
+                    </div>
+                        </a>
+                    {% endfor %}
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Divider-->
+                    <hr class="my-4" />
+                    <!-- Pager-->
+                    <div class="clearfix" >
+                    {% if number!=0 %}
+                        <a  style="float: left" class="btn btn-primary" href="{{previous}}">&larr; Previous Posts </a>
+
+                    {% endif %}
+                        <a  style="float: right" class="btn btn-primary" href="{{next}}"> Next Posts →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
