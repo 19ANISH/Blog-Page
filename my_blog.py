@@ -71,6 +71,10 @@ def route_post(post_slug):
     post = Posts.query.filter_by(slug=post_slug).first()
     return render_template("post.html",parameter=parameter,post=post)
 
+@app.route("/Posts")
+def main_post():
+    posts = Posts.query.filter_by().all()
+    return render_template("Posts.html", parameter=parameter, posts = posts)
 
 @app.route("/contact",methods=["GET","POST"])
 def contact():

@@ -1,0 +1,42 @@
+{% extends "template_use.html" %}
+{% block content %}
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('{{url_for('static',filename='assets/img/Goku.jpg')}}')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="post-heading">
+                            <h1>You are on the Post Section</h1>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <!-- using for loop(jinja) to take post -->
+                    {% for post in posts %}
+                    <a herf="/post/{{post.slug}}">
+                    <div class="post-preview">
+                        <a href="/post/{{post.slug}}">
+                            <h2 class="post-title">{{post.title}}</h2>
+                            <h3 class="post-subtitle">{{post.subtitle}}</h3>
+
+                        </a>
+                        <p class="post-meta">
+                            Posted by
+                            <a href="/">Admin</a>
+                            on {{post.date}}
+                        </p>
+                        <p  class="post-content">{{post.content[0:125]}}...</p>
+                    </div>
+
+                        </a>
+                    {% endfor %}
+                    
+
+        {% endblock %}
